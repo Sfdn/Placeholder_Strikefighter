@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Main">
+      <UniqueIdentifier>{8939d81e-d320-40fd-9d25-34a763a36893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Main">
+      <UniqueIdentifier>{e87a1df3-9299-4f4c-a0e1-b0728a04ec1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{085179d6-90df-4ff9-8724-368b982787a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\State Machine">
+      <UniqueIdentifier>{90bb94ff-cf08-4df3-a633-d6c1ff167171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{3e0dc98f-52d0-43fb-8d7c-0ccfd93c0899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\State Machine">
+      <UniqueIdentifier>{1869ef55-dbaf-44ba-bc72-a5671679acb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input Files">
+      <UniqueIdentifier>{30bea904-7596-45d3-9a5a-e7b5eefdf9c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input Files\Actions">
+      <UniqueIdentifier>{fafe8452-4411-421a-8f31-ab4cacd02351}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input Files\Input Maps">
+      <UniqueIdentifier>{404eb46d-9567-4cc2-a2e5-49d45f28d491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Input">
+      <UniqueIdentifier>{340aceff-dfa6-4c4f-9382-b21262b1e3e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Input\Actions">
+      <UniqueIdentifier>{e8f21bdd-9089-41a5-83cb-77fbe4097a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Input">
+      <UniqueIdentifier>{f4886302-1409-4640-bfea-0e80a0efe45f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Input\Actions">
+      <UniqueIdentifier>{695b47b2-09f1-4785-8bd4-70d91969636b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Input\Enums">
+      <UniqueIdentifier>{f346df05-af59-4941-97d2-a2718186f48b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Input\Managers">
+      <UniqueIdentifier>{a8fadcec-b673-4aee-abdd-143d9ff6fabe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Input\Managers">
+      <UniqueIdentifier>{9e60af26-3dbb-4c2b-8026-9c309a300218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Input\Parsing">
+      <UniqueIdentifier>{396a7c91-a127-4b50-b655-9a3ecde91801}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Observer">
+      <UniqueIdentifier>{55b80811-8591-4373-a0f9-47ff4682d624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Observer">
+      <UniqueIdentifier>{e802ba65-b825-4683-8780-ad9693be4780}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Events">
+      <UniqueIdentifier>{b3923652-a9c8-4712-ba8a-50b40e319a12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Utilities">
+      <UniqueIdentifier>{a208cd7c-4443-4f7b-9549-9cf339191635}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{d9171af6-3e14-4da2-a578-5802612927d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Game States">
+      <UniqueIdentifier>{4e65aa65-2351-44f9-8bab-71eabf45f4fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Sprites">
+      <UniqueIdentifier>{d530deaa-3657-413f-a6ea-a2cd46cc90ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Events">
+      <UniqueIdentifier>{b8926251-0ecb-4671-b31c-bdc7e695ac53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Events\Packets">
+      <UniqueIdentifier>{92e59143-5149-4d24-93e9-f8f147b28be0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Input\Parsing">
+      <UniqueIdentifier>{1714d522-1b07-42f5-9d16-458e18f8e0ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Objects">
+      <UniqueIdentifier>{47521263-17d7-44bc-b8fd-26ff6e2e5f27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Libs">
+      <UniqueIdentifier>{1447db7d-09e9-43d3-a28c-13123a43fb90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Libs\Player">
+      <UniqueIdentifier>{1ca49b47-f4e2-4ab1-aaf1-6481c96907c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Libs">
+      <UniqueIdentifier>{6f1df47f-b9b8-4433-a6d5-6c17fda5bf9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Libs\Player">
+      <UniqueIdentifier>{04656211-f281-4624-b31f-6a9966115e9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{924c4515-ded9-4e72-8c55-af93b4531f42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Game States">
+      <UniqueIdentifier>{8914e119-f432-43fb-aae1-5dc5c722f903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Objects">
+      <UniqueIdentifier>{b863eedf-6dce-452b-a9cd-4624174ca742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Utilities">
+      <UniqueIdentifier>{455fc7ef-09cc-43e9-96e5-e55b3e21058a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\File Loading">
+      <UniqueIdentifier>{4c063344-27e3-46ef-8deb-c60df46e00fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Sprites">
+      <UniqueIdentifier>{54a073ef-4568-46a3-9675-9653944e09f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Game Object">
+      <UniqueIdentifier>{561f4939-907e-43f6-b769-debbe801beab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\File Loading">
+      <UniqueIdentifier>{a6d2cc20-756d-4538-b03b-03169fd13956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Game Object">
+      <UniqueIdentifier>{38b36eee-968f-4060-8ee9-39423ce0e567}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Source Files\Engine\State Machine</Filter>
+    </ClCompile>
+    <ClCompile Include="Action.cpp">
+      <Filter>Source Files\Engine\Input\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Engine\Input\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonConfig.cpp">
+      <Filter>Source Files\Engine\Input\Parsing</Filter>
+    </ClCompile>
+    <ClCompile Include="InputMap.cpp">
+      <Filter>Source Files\Engine\Input\Parsing</Filter>
+    </ClCompile>
+    <ClCompile Include="InputMapAction.cpp">
+      <Filter>Source Files\Engine\Input\Parsing</Filter>
+    </ClCompile>
+    <ClCompile Include="InputMapper.cpp">
+      <Filter>Source Files\Engine\Input\Parsing</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files\Engine\State Machine</Filter>
+    </ClCompile>
+    <ClCompile Include="Subject.cpp">
+      <Filter>Source Files\Engine\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_SplashScreen.cpp">
+      <Filter>Source Files\Game\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_SplashScreen1.cpp">
+      <Filter>Source Files\Game\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashScreenBackground.cpp">
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Stopwatch.cpp">
+      <Filter>Source Files\Engine\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlManager.cpp">
+      <Filter>Source Files\Engine\Input\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="FileLoader.cpp">
+      <Filter>Source Files\Engine\File Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Engine\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteFactory.cpp">
+      <Filter>Source Files\Engine\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\Engine\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files\Engine\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_VideoIntro.cpp">
+      <Filter>Source Files\Game\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_StartScreen.cpp">
+      <Filter>Source Files\Game\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_MainMenu.cpp">
+      <Filter>Source Files\Game\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterSelectionButtonManager.cpp">
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuButtonManager.cpp">
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuButton.cpp">
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_CharacterSelect.cpp">
+      <Filter>Source Files\Game\Game States</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.hpp">
+      <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.hpp">
+      <Filter>Header Files\Engine\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.hpp">
+      <Filter>Header Files\Engine\State Machine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.hpp">
+      <Filter>Header Files\Engine\State Machine</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.hpp">
+      <Filter>Header Files\Engine\Input\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions.hpp">
+      <Filter>Header Files\Engine\Input\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Axis.hpp">
+      <Filter>Header Files\Engine\Input\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.hpp">
+      <Filter>Header Files\Engine\Input\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputMapper.hpp">
+      <Filter>Header Files\Engine\Input\Parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonConfig.hpp">
+      <Filter>Header Files\Engine\Input\Parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="InputTypes.hpp">
+      <Filter>Header Files\Engine\Input\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="InputMapAction.hpp">
+      <Filter>Header Files\Engine\Input\Parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="InputMap.hpp">
+      <Filter>Header Files\Engine\Input\Parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.hpp">
+      <Filter>Header Files\Engine\Observer</Filter>
+    </ClInclude>
+    <ClInclude Include="Subject.hpp">
+      <Filter>Header Files\Engine\Observer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.hpp">
+      <Filter>Header Files\Engine\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.hpp">
+      <Filter>Header Files\Engine\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Updatable.hpp">
+      <Filter>Header Files\Engine\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.hpp">
+      <Filter>Header Files\Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_SplashScreen.hpp">
+      <Filter>Header Files\Game\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.hpp">
+      <Filter>Header Files\Engine\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.hpp">
+      <Filter>Header Files\Engine\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.hpp">
+      <Filter>Header Files\Engine\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.hpp">
+      <Filter>Header Files\Engine\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="FileLoader.hpp">
+      <Filter>Header Files\Engine\File Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStates.hpp">
+      <Filter>Header Files\Game\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.hpp">
+      <Filter>Header Files\Engine\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteFactory.hpp">
+      <Filter>Header Files\Engine\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlManager.hpp">
+      <Filter>Header Files\Engine\Input\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Players.hpp">
+      <Filter>Header Files\Engine\Input\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerEventPacket.hpp">
+      <Filter>Header Files\Game\Events\Packets</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashScreenBackground.hpp">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_SplashScreen1.hpp">
+      <Filter>Header Files\Game\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="Stopwatch.hpp">
+      <Filter>Header Files\Engine\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_VideoIntro.hpp">
+      <Filter>Header Files\Game\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_StartScreen.hpp">
+      <Filter>Header Files\Game\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_MainMenu.hpp">
+      <Filter>Header Files\Game\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuButton.hpp">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuButtonManager.hpp">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_CharacterSelect.hpp">
+      <Filter>Header Files\Game\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterSelectionButtonManager.hpp">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Input\ActionList.action">
+      <Filter>Input Files\Actions</Filter>
+    </None>
+    <None Include="Input\MainMenu.inputmap">
+      <Filter>Input Files\Input Maps</Filter>
+    </None>
+    <None Include="Input\LandingScreen.inputmap">
+      <Filter>Input Files\Input Maps</Filter>
+    </None>
+    <None Include="Input\SplashScreen.inputmap">
+      <Filter>Input Files\Input Maps</Filter>
+    </None>
+  </ItemGroup>
+</Project>
