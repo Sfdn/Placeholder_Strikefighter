@@ -76,7 +76,8 @@ private:
 // | Methods |
 /////////////////////////////// 
 
-	void interact      ();
+	void interact       ();
+	void back           ();
 	void moveSelectionX ( const int iDirection );
 	void moveSelectionY ( const int iDirection );
 

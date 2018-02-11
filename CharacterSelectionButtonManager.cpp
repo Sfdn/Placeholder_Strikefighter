@@ -75,10 +75,11 @@ void CharacterSelectionButtonManager::init ( FileLoader * pFileLoader , SDL_Rend
 	m_mainMenuButton [ m_iCurrentButton ].setActive ( true );
 
 	//Subscribe this object to listen to the correct actions
-	m_vActionListener.push_back ( ACTION_INTERACT );
-	m_vActionListener.push_back ( ACTION_MOVESELECTIONUP );
-	m_vActionListener.push_back ( ACTION_MOVESELECTIONDOWN );
-	m_vActionListener.push_back ( ACTION_MOVESELECTIONLEFT );
+	m_vActionListener.push_back ( ACTION_INTERACT           );
+	m_vActionListener.push_back ( ACTION_RETURN             );
+	m_vActionListener.push_back ( ACTION_MOVESELECTIONUP    );
+	m_vActionListener.push_back ( ACTION_MOVESELECTIONDOWN  );
+	m_vActionListener.push_back ( ACTION_MOVESELECTIONLEFT  );
 	m_vActionListener.push_back ( ACTION_MOVESELECTIONRIGHT );
 }
 
@@ -107,6 +108,9 @@ void CharacterSelectionButtonManager::update ()
 		{
 			case ACTION_INTERACT:
 				interact ();
+				break;
+			case ACTION_RETURN:
+				back ();
 				break;
 			case ACTION_MOVESELECTIONDOWN:
 				moveSelectionY ( 1 );
@@ -168,6 +172,11 @@ void CharacterSelectionButtonManager::interact ()
 	{
 		m_bSelected  = true;
 	}
+}
+
+void CharacterSelectionButtonManager::back ()
+{
+	m_eGameState = GAMESTATE_MAINMENU;
 }
 
 void CharacterSelectionButtonManager::moveSelectionX ( const int iDirection )

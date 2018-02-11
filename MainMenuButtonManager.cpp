@@ -12,12 +12,12 @@ MainMenuButtonManager::MainMenuButtonManager ()
 {
 	m_mainMenuButton   = new MainMenuButton [ ciNumMenuButtons ];
 	m_vButtonPositions = new Vector3<float> [ ciNumMenuButtons ]
-	{ { 60.0f  , 195.0f , 0.0f } 
-	, { 160.0f , 264.0f , 0.0f }  
-	, { 256.0f , 334.0f , 0.0f } 
-	, { 445.0f , 400.0f , 0.0f } 
-	, { 580.0f , 465.0f , 0.0f } 
-	, { 755.0f , 530.0f , 0.0f }
+	{ { 40.0f  , 215.0f , 0.0f } 
+	, { 125.0f , 284.0f , 0.0f }  
+	, { 220.0f , 350.0f , 0.0f } 
+	, { 410.0f , 420.0f , 0.0f } 
+	, { 550.0f , 485.0f , 0.0f } 
+	, { 720.0f , 550.0f , 0.0f }
 	};
 
 	m_confirmBoxButton        = new MainMenuButton [ ciNumConfirmButtons ];
@@ -74,6 +74,7 @@ void MainMenuButtonManager::init ( FileLoader * pFileLoader , SDL_Renderer * pRe
 	m_confirmBoxButton [ m_iConfirmButton ].setActive ( true );
 
 	m_vActionListener.push_back ( ACTION_INTERACT           );
+	m_vActionListener.push_back ( ACTION_RETURN             );
 	m_vActionListener.push_back ( ACTION_MOVESELECTIONUP    );
 	m_vActionListener.push_back ( ACTION_MOVESELECTIONDOWN  );
 	m_vActionListener.push_back ( ACTION_MOVESELECTIONLEFT  );
@@ -95,6 +96,9 @@ void MainMenuButtonManager::update ()
 		{
 			case ACTION_INTERACT:
 				interact ();
+				break;
+			case ACTION_RETURN:
+				back ();
 				break;
 			case ACTION_MOVESELECTIONDOWN:
 				moveSelectionY ( 1 );
@@ -183,6 +187,11 @@ void MainMenuButtonManager::interact ()
 				break;
 		}
 	}
+}
+
+void MainMenuButtonManager::back ()
+{
+	m_eGameState = GAMESTATE_STARTGAME;
 }
 
 void MainMenuButtonManager::moveSelectionX ( const int iDirection )
