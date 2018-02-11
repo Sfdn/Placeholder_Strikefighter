@@ -54,7 +54,7 @@ void MainMenuButtonManager::init ( FileLoader * pFileLoader , SDL_Renderer * pRe
 {
 	for ( int i = 0; i < ciNumMenuButtons; i++ )
 	{
-		m_mainMenuButton [ i ].setSprite ( SpriteFactory::createSprite ( pFileLoader , csTEXTURE_PATH + csMAIN_MENU_SELECTOR + std::to_string ( i + 1 ) + csIMAGE_EXTENSION ) );
+		m_mainMenuButton [ i ].setSprite ( SpriteFactory::createSprite ( pFileLoader , csTEXTURE_PATH + csMAIN_MENU_SELECTOR + csIMAGE_EXTENSION ) );
 		m_mainMenuButton [ i ].getSprite ()->setRenderer ( pRenderer );
 		m_mainMenuButton [ i ].getSprite ()->setPosition ( m_vButtonPositions [ i ] );
 	}

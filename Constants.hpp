@@ -91,7 +91,7 @@ const std::string csSTART_GAME_SCREEN       = "LandingMenu_0";
 const std::string csMAIN_MENU_SCREEN        = "MainMenu_0";
 const std::string csCHARACTER_SELECT_SCREEN = "CharacterSelect_0";
 
-const std::string csMAIN_MENU_SELECTOR    = "mm_Exit";
+const std::string csMAIN_MENU_SELECTOR    = "mm_Selector";
 const std::string csMAIN_MENU_SELECTOR_0  = "mm_Exit1";
 const std::string csMAIN_MENU_SELECTOR_1  = "mm_Exit2";
 const std::string csMAIN_MENU_SELECTOR_2  = "mm_Exit3";
