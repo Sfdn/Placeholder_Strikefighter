@@ -47,8 +47,9 @@ public:
 	void setTexture     ( SDL_Texture*  pTexture  , SDL_Rect& rect );
 	void setTextureRect ( SDL_Rect&     rect      );
 
-	const int getWidth  () const;
-	const int getHeight () const;
+	const int    getWidth   () const;
+	const int    getHeight  () const;
+	SDL_Texture* getTexture () const;
 
 ///////////////////////////////
 // | Methods |

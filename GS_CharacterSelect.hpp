@@ -74,6 +74,9 @@ private:
 	Stopwatch                         m_stopwatch;
 	Sprite**                          m_pCharacterPortraits_1;
 	Sprite**                          m_pCharacterPortraits_2;
+	Sprite**						  m_pTimerNumbersPool;
+	Sprite*							  m_pTimerNumbers_0;
+	Sprite*							  m_pTimerNumbers_1;
 
 	int                               m_iNumPlayers;
 
@@ -81,8 +84,8 @@ private:
 	// | Methods |
 	/////////////////////////////// 
 
-	void setUpObjects ();
-
+	void setUpObjects      ();
+	void setVisualTimeLeft ();
 };
 
 #endif // !GS_CHARACTERSELECT_H

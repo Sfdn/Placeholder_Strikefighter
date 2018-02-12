@@ -42,8 +42,15 @@ const int Sprite::getHeight () const
 	return m_iHeight;
 }
 
+SDL_Texture * Sprite::getTexture () const
+{
+	return m_pTexture;
+}
+
 void Sprite::render ()
 {
+	if ( m_pTexture == nullptr ) { return; }
+
 	SDL_Rect rect;
 	Vector3<float> v = getPosition ();
 	rect.w           = m_iWidth;
@@ -55,6 +62,8 @@ void Sprite::render ()
 
 void Sprite::renderFlip ( SDL_RendererFlip flip )
 {
+	if ( m_pTexture == nullptr ) { return; }
+
 	SDL_Rect rect;
 	Vector3<float> v = getPosition ();
 	rect.w           = m_iWidth;

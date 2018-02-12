@@ -39,6 +39,13 @@ public:
 	Stopwatch ( const int iWaitTime );
 
 ///////////////////////////////
+// | Property Accessors |
+///////////////////////////////
+
+	const int getSecondsPassed () const;
+	const int getSecondsLeft   () const;
+
+///////////////////////////////
 // | Methods |
 /////////////////////////////// 
 

@@ -14,6 +14,16 @@ Stopwatch::Stopwatch ( const int iWaitTime )
 {
 }
 
+const int Stopwatch::getSecondsPassed () const
+{
+	return ( SDL_GetTicks () - m_iStartTime ) / 1000;
+}
+
+const int Stopwatch::getSecondsLeft () const
+{
+	return ( m_iWaitTime / 1000 ) - getSecondsPassed ();
+}
+
 void Stopwatch::start ( const Uint32 iStartTime )
 {
 	//Flag the timer to begin updating

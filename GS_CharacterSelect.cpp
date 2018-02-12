@@ -1,6 +1,7 @@
 #include "GS_CharacterSelect.hpp"
 #include "InputManager.hpp"
 #include "StateMachine.hpp"
+#include "Constants.hpp"
 
 GS_CharacterSelect::GS_CharacterSelect ( const int iNumPlayers )
 	: m_e                     ()
@@ -10,6 +11,9 @@ GS_CharacterSelect::GS_CharacterSelect ( const int iNumPlayers )
 	, m_stopwatch             ( ciCHARACTER_SELECTION_WAIT_TIME )
 	, m_pCharacterPortraits_1 ( nullptr                         )
 	, m_pCharacterPortraits_2 ( nullptr                         )
+	, m_pTimerNumbersPool     ( nullptr                         )
+	, m_pTimerNumbers_0       ( nullptr                         )
+	, m_pTimerNumbers_1       ( nullptr                         )
 	, m_iNumPlayers           ( iNumPlayers                     )
 {
 }
@@ -97,6 +101,8 @@ void GS_CharacterSelect::update ()
 	{
 		m_pStateMachine->setNewState ( GAMESTATE_MAINMENU );
 	}
+
+	setVisualTimeLeft ();
 }
 
 void GS_CharacterSelect::render ()
@@ -114,6 +120,12 @@ void GS_CharacterSelect::render ()
 	if ( m_iNumPlayers > 1 )
 	{
 		m_pCharacterPortraits_2 [ m_buttonManager_2.getSelection () ]->renderFlip ( SDL_FLIP_HORIZONTAL );
+	}
+
+	if ( m_pTimerNumbers_0 && m_pTimerNumbers_1 )
+	{
+		m_pTimerNumbers_0->render ();
+		m_pTimerNumbers_1->render ();
 	}
 }
 
@@ -176,7 +188,45 @@ void GS_CharacterSelect::setUpObjects ()
 		m_pCharacterPortraits_2 [ i ]->setPosition ( cvCHARACTER_PORTRAIT_P2 );
 	}
 
+	m_pTimerNumbersPool = new Sprite* [ 10 ];
+	for ( int i = 0; i < 10; i++ )
+	{
+		m_pTimerNumbersPool [ i ] = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csNUMBERS + std::to_string ( i ) + csIMAGE_EXTENSION );
+	}
+	m_pTimerNumbers_0 = SpriteFactory::createSprite ( m_pTimerNumbersPool [ 0 ]->getTexture () );
+	m_pTimerNumbers_0->setRenderer ( m_pRenderer );
+	m_pTimerNumbers_1 = SpriteFactory::createSprite ( m_pTimerNumbersPool [ 0 ]->getTexture () );
+	m_pTimerNumbers_1->setRenderer ( m_pRenderer );
+
 	//Start the stopwatch based on the current time
 	m_stopwatch.start ( SDL_GetTicks () );
+
+	setVisualTimeLeft ();  
+}
+
+void GS_CharacterSelect::setVisualTimeLeft ()
+{
+	if ( m_pTimerNumbers_0 == nullptr || m_pTimerNumbers_1 == nullptr ) { return; }
+
+	int iTimeLeft = m_stopwatch.getSecondsLeft ();
+
+	if ( iTimeLeft >= 10 )
+	{
+		m_pTimerNumbers_1->setTexture ( m_pTimerNumbersPool [ iTimeLeft % 10 ]->getTexture () );
+		m_pTimerNumbers_0->setTexture ( m_pTimerNumbersPool [ ( iTimeLeft / 10 ) % 10 ]->getTexture () );
+		float x1 = static_cast< float >( ( ciSCREEN_WIDTH / 2 ) - ( m_pTimerNumbers_0->getWidth () / 2 ) - m_pTimerNumbers_0->getWidth () );
+		float x2 = static_cast< float >( ( ciSCREEN_WIDTH / 2 ) + ( m_pTimerNumbers_1->getWidth () / 2) );
+		float y  = static_cast< float >( ciSCREEN_HEIGHT / 2 + 110 );
+		m_pTimerNumbers_0->setPosition ( { x1 , y , 0 } );
+		m_pTimerNumbers_1->setPosition ( { x2 , y , 0 } );
+	}
+	else
+	{
+		m_pTimerNumbers_1->setTexture ( nullptr );
+		m_pTimerNumbers_0->setTexture ( m_pTimerNumbersPool [ iTimeLeft % 10 ]->getTexture () );
+		float x = static_cast< float >( ( ciSCREEN_WIDTH / 2 ) - ( m_pTimerNumbers_0->getWidth () / 2 ) );
+		float y = static_cast< float >( ciSCREEN_HEIGHT / 2 + 110 );
+		m_pTimerNumbers_0->setPosition ( { x , y , 0 } );		
+	}
 }
 
