@@ -54,7 +54,8 @@ public:
 // | Methods |
 /////////////////////////////// 
 
-	virtual void render () override;
+	virtual void render      () override;
+			void renderFlip  ( SDL_RendererFlip flip );
 
 private:
 

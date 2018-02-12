@@ -46,9 +46,27 @@ void Sprite::render ()
 {
 	SDL_Rect rect;
 	Vector3<float> v = getPosition ();
-	rect.w = m_iWidth;
-	rect.h = m_iHeight;
-	rect.x = v.x;
-	rect.y = v.y;
+	rect.w           = m_iWidth;
+	rect.h           = m_iHeight;
+	rect.x           = v.x;
+	rect.y           = v.y;
 	SDL_RenderCopy ( m_pRenderer , m_pTexture , NULL , &rect );
+}
+
+void Sprite::renderFlip ( SDL_RendererFlip flip )
+{
+	SDL_Rect rect;
+	Vector3<float> v = getPosition ();
+	rect.w           = m_iWidth;
+	rect.h           = m_iHeight;
+	rect.x           = v.x;
+	rect.y           = v.y;
+	SDL_RenderCopyEx ( m_pRenderer 
+					   , m_pTexture 
+					   , NULL 
+					   , &rect 
+					   , 0
+					   , NULL 
+					   , flip 
+	);
 }

@@ -113,7 +113,7 @@ void GS_CharacterSelect::render ()
 	m_pCharacterPortraits_1 [ m_buttonManager_1.getSelection () ]->render ();
 	if ( m_iNumPlayers > 1 )
 	{
-		m_pCharacterPortraits_2 [ m_buttonManager_2.getSelection () ]->render ();
+		m_pCharacterPortraits_2 [ m_buttonManager_2.getSelection () ]->renderFlip ( SDL_FLIP_HORIZONTAL );
 	}
 }
 
