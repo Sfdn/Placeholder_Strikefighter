@@ -14,6 +14,9 @@ GS_CharacterSelect::GS_CharacterSelect ( const int iNumPlayers )
 	, m_pTimerNumbersPool     ( nullptr                         )
 	, m_pTimerNumbers_0       ( nullptr                         )
 	, m_pTimerNumbers_1       ( nullptr                         )
+	, m_pCharacterNamePool    ( nullptr                         )
+	, m_pCharacterName_0      ( nullptr                         )
+	, m_pCharacterName_1      ( nullptr                         )
 	, m_iNumPlayers           ( iNumPlayers                     )
 {
 }
@@ -70,6 +73,8 @@ void GS_CharacterSelect::update ()
 	m_buttonManager_1.update ();
 	m_buttonManager_2.update ();
 
+	//setCharacterNames ();
+
 	//Tell the statemachine to change state if the managers are set to.
 	if ( m_buttonManager_1.getChangedState () != GAMESTATE_NULL )
 	{
@@ -115,6 +120,10 @@ void GS_CharacterSelect::render ()
 
 	m_buttonManager_1.render ();
 	m_buttonManager_2.render ();
+
+	m_pCharacterName_0->render ();
+	m_pCharacterName_1->render ();
+
 
 	m_pCharacterPortraits_1 [ m_buttonManager_1.getSelection () ]->render ();
 	if ( m_iNumPlayers > 1 )
@@ -198,6 +207,23 @@ void GS_CharacterSelect::setUpObjects ()
 	m_pTimerNumbers_1 = SpriteFactory::createSprite ( m_pTimerNumbersPool [ 0 ]->getTexture () );
 	m_pTimerNumbers_1->setRenderer ( m_pRenderer );
 
+	m_pCharacterNamePool = new Sprite* [ ciNUM_CHARACTERS ];
+	for ( int i = 0; i < ciNUM_CHARACTERS; i++ )
+	{
+		m_pCharacterNamePool [ i ] = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csCHARACTER_NAMES + std::to_string ( i ) + csIMAGE_EXTENSION );
+	}
+
+	m_pCharacterName_0 = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csCHARACTER_NAMES + csIMAGE_EXTENSION );
+	m_pCharacterName_0->setRenderer ( m_pRenderer );
+
+	float fNameX = static_cast< float >( ciSCREEN_WIDTH / 2 - m_pCharacterName_0->getWidth () / 2 );
+	float fNameY = static_cast< float >( ciSCREEN_HEIGHT / 2 + 131 );
+
+	m_pCharacterName_0->setPosition ( { fNameX - m_pCharacterName_0->getWidth () + 75 , fNameY , 0 } );
+	m_pCharacterName_1 = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csCHARACTER_NAMES + csIMAGE_EXTENSION );
+	m_pCharacterName_1->setRenderer ( m_pRenderer );
+	m_pCharacterName_1->setPosition ( { fNameX + m_pCharacterName_0->getWidth () - 75 , fNameY , 0 } );
+
 	//Start the stopwatch based on the current time
 	m_stopwatch.start ( SDL_GetTicks () );
 
@@ -216,7 +242,7 @@ void GS_CharacterSelect::setVisualTimeLeft ()
 		m_pTimerNumbers_0->setTexture ( m_pTimerNumbersPool [ ( iTimeLeft / 10 ) % 10 ]->getTexture () );
 		float x1 = static_cast< float >( ( ciSCREEN_WIDTH / 2 ) - ( m_pTimerNumbers_0->getWidth () / 2 ) - m_pTimerNumbers_0->getWidth () );
 		float x2 = static_cast< float >( ( ciSCREEN_WIDTH / 2 ) + ( m_pTimerNumbers_1->getWidth () / 2) );
-		float y  = static_cast< float >( ciSCREEN_HEIGHT / 2 + 110 );
+		float y  = static_cast< float >( ciSCREEN_HEIGHT / 2 + 125 );
 		m_pTimerNumbers_0->setPosition ( { x1 , y , 0 } );
 		m_pTimerNumbers_1->setPosition ( { x2 , y , 0 } );
 	}
@@ -225,8 +251,18 @@ void GS_CharacterSelect::setVisualTimeLeft ()
 		m_pTimerNumbers_1->setTexture ( nullptr );
 		m_pTimerNumbers_0->setTexture ( m_pTimerNumbersPool [ iTimeLeft % 10 ]->getTexture () );
 		float x = static_cast< float >( ( ciSCREEN_WIDTH / 2 ) - ( m_pTimerNumbers_0->getWidth () / 2 ) );
-		float y = static_cast< float >( ciSCREEN_HEIGHT / 2 + 110 );
+		float y = static_cast< float >( ciSCREEN_HEIGHT / 2 + 125 );
 		m_pTimerNumbers_0->setPosition ( { x , y , 0 } );		
+	}
+}
+
+void GS_CharacterSelect::setCharacterNames ()
+{
+	m_pCharacterName_0->setTexture ( m_pCharacterNamePool [ m_buttonManager_1.getSelection () ]->getTexture () );
+
+	if ( m_iNumPlayers > 1 )
+	{
+		m_pCharacterName_1->setTexture ( m_pCharacterNamePool [ m_buttonManager_2.getSelection () ]->getTexture () );
 	}
 }
 

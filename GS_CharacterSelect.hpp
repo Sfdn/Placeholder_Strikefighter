@@ -77,6 +77,9 @@ private:
 	Sprite**						  m_pTimerNumbersPool;
 	Sprite*							  m_pTimerNumbers_0;
 	Sprite*							  m_pTimerNumbers_1;
+	Sprite**						  m_pCharacterNamePool;
+	Sprite*							  m_pCharacterName_0;
+	Sprite*							  m_pCharacterName_1;
 
 	int                               m_iNumPlayers;
 
@@ -86,6 +89,7 @@ private:
 
 	void setUpObjects      ();
 	void setVisualTimeLeft ();
+	void setCharacterNames ();
 };
 
 #endif // !GS_CHARACTERSELECT_H

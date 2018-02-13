@@ -89,7 +89,7 @@ const std::string csSPLASH_SCREEN_1         = "SplashScreen_1";
 const std::string csVIDEO_INTRO             = "VideoIntro_0";
 const std::string csSTART_GAME_SCREEN       = "LandingMenu_0";
 const std::string csMAIN_MENU_SCREEN        = "MainMenu_0";
-const std::string csCHARACTER_SELECT_SCREEN = "CharacterSelect_0";
+const std::string csCHARACTER_SELECT_SCREEN = "CharacterSelect_1";
 
 const std::string csMAIN_MENU_SELECTOR    = "mm_Selector";
 const std::string csMAIN_MENU_SELECTOR_0  = "mm_Exit1";
@@ -106,6 +106,8 @@ const std::string csCHARACTER_SELECTOR_1  = "css_Player2Selector";
 const std::string csCHARACTER             = "css_Character";
 //Timer numbers							 
 const std::string csNUMBERS               = "Numbers/";
+//Character name textures
+const std::string csCHARACTER_NAMES       = "css_Name";
 
 
 #pragma endregion Const Strings
