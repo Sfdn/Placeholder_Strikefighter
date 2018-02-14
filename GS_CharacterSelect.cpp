@@ -9,6 +9,7 @@ GS_CharacterSelect::GS_CharacterSelect ( const int iNumPlayers )
 	, m_buttonManager_1       ()
 	, m_buttonManager_2       ()
 	, m_stopwatch             ( ciCHARACTER_SELECTION_WAIT_TIME )
+	, m_pCharacterSelection   ( nullptr                         )
 	, m_pCharacterPortraits_1 ( nullptr                         )
 	, m_pCharacterPortraits_2 ( nullptr                         )
 	, m_pTimerNumbersPool     ( nullptr                         )
@@ -120,6 +121,11 @@ void GS_CharacterSelect::render ()
 	if ( m_pBackground )
 	{
 		m_pBackground->render ();
+	}
+
+	for ( int i = 0; i < ciNUM_CHARACTERS; i++ )
+	{
+		m_pCharacterSelection [ i ]->render ();
 	}
 
 	m_buttonManager_1.render ();
@@ -239,10 +245,31 @@ void GS_CharacterSelect::setUpObjects ()
 		m_buttonManager_2.subscribeForInput ( PLAYER_2        );
 	}
 
+	Vector3<float> vSelectionPositions [] = 
+	{ { 120.0f  , 573.0f , 0.0f }
+	, { 328.0f  , 573.0f , 0.0f }
+	, { 536.0f  , 573.0f , 0.0f }
+	, { 744.0f  , 573.0f , 0.0f }
+	, { 953.0f  , 573.0f , 0.0f }
+	, { 1161.0f , 573.0f , 0.0f }
+	, { 16.0f   , 668.0f , 0.0f }
+	, { 224.0f  , 668.0f , 0.0f }
+	, { 432.0f  , 668.0f , 0.0f }
+	, { 640.0f  , 668.0f , 0.0f }
+	, { 849.0f  , 668.0f , 0.0f }
+	, { 1057.0f , 668.0f , 0.0f }
+	};
+
+	m_pCharacterSelection   = new Sprite* [ ciNUM_CHARACTERS ];
 	m_pCharacterPortraits_1 = new Sprite* [ ciNUM_CHARACTERS ];
 	m_pCharacterPortraits_2 = new Sprite* [ ciNUM_CHARACTERS ];
 	for ( int i = 0; i < ciNUM_CHARACTERS; i++ )
 	{
+		/*m_pCharacterSelection [ i ] = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csCHARACTER_SELECTION + std::to_string ( i ) + csIMAGE_EXTENSION );*/
+		m_pCharacterSelection [ i ] = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csCHARACTER_SELECTION  + csIMAGE_EXTENSION );
+		m_pCharacterSelection [ i ]->setRenderer ( m_pRenderer );
+		m_pCharacterSelection [ i ]->setPosition ( vSelectionPositions [ i ] );
+
 		m_pCharacterPortraits_1 [ i ] = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csCHARACTER + std::to_string ( i ) + csIMAGE_EXTENSION );
 		m_pCharacterPortraits_1 [ i ]->setRenderer ( m_pRenderer );
 		m_pCharacterPortraits_1 [ i ]->setPosition ( cvCHARACTER_PORTRAIT_P1 );

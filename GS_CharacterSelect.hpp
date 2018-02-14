@@ -74,6 +74,7 @@ private:
 	CharacterSelectionButtonManager   m_buttonManager_1;
 	CharacterSelectionButtonManager   m_buttonManager_2;
 	Stopwatch                         m_stopwatch;
+	Sprite**                          m_pCharacterSelection;
 	//Portrait sprites for selected characters
 	Sprite**                          m_pCharacterPortraits_1;
 	Sprite**                          m_pCharacterPortraits_2;

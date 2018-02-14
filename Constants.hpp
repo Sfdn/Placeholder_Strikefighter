@@ -100,6 +100,7 @@ const std::string csMAIN_MENU_SELECTOR_4  = "mm_Exit5";
 const std::string csMAIN_MENU_SELECTOR_5  = "mm_Exit6";
 const std::string csMAIN_MENU_CONFIRM_BOX = "mm_ConfirmBox";
 
+const std::string csCHARACTER_SELECTION   = "css_Selection";
 const std::string csCHARACTER_SELECTOR_0  = "css_Player1Selector";
 const std::string csCHARACTER_SELECTOR_1  = "css_Player2Selector";
 //Character currently needs to be 409px x 394px
