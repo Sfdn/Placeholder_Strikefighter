@@ -108,6 +108,8 @@ const std::string csCHARACTER             = "css_Character";
 const std::string csNUMBERS               = "Numbers/";
 //Character name textures
 const std::string csCHARACTER_NAMES       = "css_Name";
+//Character model textures
+const std::string csCHARACTER_MODEL       = "css_CharacterModel";
 
 
 #pragma endregion Const Strings
@@ -134,8 +136,8 @@ const char ccIM_NEWLINE      = '\n';
 #pragma region Const Vectors
 
 //Portrait Positions
-const Vector3<float> cvCHARACTER_PORTRAIT_P1 = { 32.0f  , 85.0f , 0.0f };
-const Vector3<float> cvCHARACTER_PORTRAIT_P2 = { 925.0f , 85.0f , 0.0f };
+const Vector3<float> cvCHARACTER_PORTRAIT_P1 = { 32.0f  , 86.0f , 0.0f };
+const Vector3<float> cvCHARACTER_PORTRAIT_P2 = { 927.0f , 86.0f , 0.0f };
 
 #pragma endregion Const Vectors
 
