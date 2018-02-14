@@ -89,7 +89,7 @@ const std::string csSPLASH_SCREEN_1         = "SplashScreen_1";
 const std::string csVIDEO_INTRO             = "VideoIntro_0";
 const std::string csSTART_GAME_SCREEN       = "LandingMenu_0";
 const std::string csMAIN_MENU_SCREEN        = "MainMenu_0";
-const std::string csCHARACTER_SELECT_SCREEN = "CharacterSelect_1";
+const std::string csCHARACTER_SELECT_SCREEN = "CharacterSelect_2";
 
 const std::string csMAIN_MENU_SELECTOR    = "mm_Selector";
 const std::string csMAIN_MENU_SELECTOR_0  = "mm_Exit1";

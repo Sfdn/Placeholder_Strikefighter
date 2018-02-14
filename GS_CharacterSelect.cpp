@@ -49,6 +49,12 @@ void GS_CharacterSelect::handleEvents ()
 			case SDL_KEYDOWN:
 				m_pInputManager->processAction ( m_e , INPUTTYPE_KEYBOARD );
 				break;
+			case SDL_MOUSEMOTION:
+				m_pInputManager->processAction ( m_e , INPUTTYPE_MOUSEMOTION );
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				m_pInputManager->processAction ( m_e , INPUTTYPE_MOUSEBUTTON );
+				break;
 			case SDL_CONTROLLERAXISMOTION:
 				m_pInputManager->processAction ( m_e , INPUTTYPE_CONTROLLERAXIS );
 				break;
@@ -127,7 +133,7 @@ void GS_CharacterSelect::render ()
 	{
 		m_pCharacterSelection [ i ]->render ();
 	}
-
+	
 	m_buttonManager_1.render ();
 	m_buttonManager_2.render ();
 
@@ -322,6 +328,9 @@ void GS_CharacterSelect::setUpObjects ()
 	m_pCharacterModel_1 = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csCHARACTER_MODEL + csIMAGE_EXTENSION );
 	m_pCharacterModel_1->setRenderer ( m_pRenderer );
 	m_pCharacterModel_1->setPosition ( { fModelX + m_pCharacterModel_1->getWidth () + 30 , fModelY , 0 } );
+
+	m_buttonManager_1.setButtonSize ( m_pCharacterSelection [ 0 ]->getWidth () , m_pCharacterSelection [ 0 ]->getHeight () );
+	m_buttonManager_2.setButtonSize ( m_pCharacterSelection [ 0 ]->getWidth () , m_pCharacterSelection [ 0 ]->getHeight () );
 
 	//Start the stopwatch based on the current time
 	m_stopwatch.start ( SDL_GetTicks () );

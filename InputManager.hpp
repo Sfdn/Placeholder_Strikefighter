@@ -65,7 +65,8 @@ private:
 ///////////////////////////////
 
 	std::map<const int , Action*> m_mapKeyboardActions;
-	std::map<const int , Action*> m_mapMouseActions;
+	std::map<const int , Action*> m_mapMouseButtonActions;
+	std::map<const int , Action*> m_mapMouseMotionActions;
 	std::map<const int , Action*> m_mapControllerButtonActions;
 	std::map<const int , Action*> m_mapControllerAxisActions;
 
@@ -88,6 +89,8 @@ private:
 	std::map<const int , Action*>* retrieveMapFromID    ( const eInputTypes eID );
 
 	Action* getKeyboardAction         ( const SDL_Event& e ) const;
+	Action* getMouseMotionAction      ( const SDL_Event& e ) const;
+	Action* getMouseButtonAction      ( const SDL_Event& e ) const;
 	Action* getControllerButtonAction ( const SDL_Event& e ) const;
 	Action* getControllerAxisAction   ( const SDL_Event& e ) const;
 

@@ -45,6 +45,8 @@ public:
 
 	const int  getSelection () const;
 	const bool getSelected  () const;
+	
+	void setButtonSize ( float fW , float fH );
 
 	///////////////////////////////
 	// | Methods |
@@ -64,6 +66,8 @@ private:
 
 	MainMenuButton* m_mainMenuButton;
 	Vector3<float>* m_vButtonPositions;
+	float           m_fButtonWidth;
+	float           m_fButtonHeight;
 	int             m_iCurrentButton;
 
 	int             m_iSelection;
@@ -75,6 +79,7 @@ private:
 
 	void interact       ();
 	void back           ();
+	void moveCursor     ( const Action* action );
 	void moveSelectionX ( const int iDirection );
 	void moveSelectionY ( const int iDirection );
 

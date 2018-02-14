@@ -53,6 +53,11 @@ public:
 	const int      getConsecutiveFrames () const;
 	const int      getJoystickID        () const;
 	const int      getPlayer            () const;
+	const int      getClicks            () const;
+	const int      getMouseX            () const;
+	const int      getMouseY            () const;
+	const int      getMouseXRel         () const;
+	const int      getMouseYRel         () const;
 
 ///////////////////////////////
 // | Methods |
@@ -62,6 +67,10 @@ public:
 	void assign ( const int   iVal      = 0         , const ePlayers       ePlayer     = PLAYER_INVALID );
 	void assign ( const eAxis eAxisType = AXIS_NULL , const float          fVal        = 0.0f           , const SDL_JoystickID iJoystickID = -1 )           ;
 	void assign ( const eAxis eAxisType = AXIS_NULL , const float          fVal        = 0.0f           , const ePlayers       ePlayer     = PLAYER_INVALID );
+	void assign ( const int iVal , const Uint8 iClicks , const Sint32 iMouseX , const Sint32 iMouseY  , 
+				  const ePlayers ePlayer );
+	void assign ( const int iVal , const Sint32 iMouseX, const Sint32 iMouseY, const Sint32 iMouseXRel , 
+				  const Sint32 iMouseYRel, const ePlayers ePlayer );
 	void reset  ();
 
 private:
@@ -77,6 +86,11 @@ private:
 	int		       m_iConsecutiveFrames;
 	SDL_JoystickID m_iJoystickID;
 	ePlayers       m_ePlayer;
+	Uint8		   m_iClicks;
+	Sint32         m_iMouseX;
+	Sint32         m_iMouseY;
+	Sint32         m_iMouseXRel;
+	Sint32         m_iMouseYRel;
 	bool           m_bProcessed;
 };
 

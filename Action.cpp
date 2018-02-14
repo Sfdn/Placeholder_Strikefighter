@@ -8,6 +8,11 @@ Action::Action ( const eActions eAction )
 	, m_iConsecutiveFrames ( 0			    )
 	, m_iJoystickID        ( -1             )
 	, m_ePlayer            ( PLAYER_INVALID )
+	, m_iClicks            ( 0              )
+	, m_iMouseX            ( -1             )
+	, m_iMouseY            ( -1             )
+	, m_iMouseXRel         ( 0              )
+	, m_iMouseYRel         ( 0              )
 	, m_bProcessed         ( false          )
 {
 }
@@ -47,6 +52,31 @@ const int Action::getPlayer () const
 	return m_ePlayer;
 }
 
+const int Action::getClicks () const
+{
+	return m_iClicks;
+}
+
+const int Action::getMouseX () const
+{
+	return m_iMouseX;
+}
+
+const int Action::getMouseY () const
+{
+	return m_iMouseY;
+}
+
+const int Action::getMouseXRel () const
+{
+	return m_iMouseXRel;
+}
+
+const int Action::getMouseYRel () const
+{
+	return m_iMouseYRel;
+}
+
 void Action::assign ( const int iVal , const SDL_JoystickID iJoystickID )
 {
 	m_iValue			 = iVal;
@@ -81,6 +111,30 @@ void Action::assign ( const eAxis eAxisType , const float fVal , const ePlayers 
 	m_iConsecutiveFrames ++;
 }
 
+void Action::assign ( const int iVal , const Uint8 iClicks , const Sint32 iMouseX , const Sint32 iMouseY , const ePlayers ePlayer )
+{
+	m_iValue            = iVal;
+	m_iClicks           = iClicks;
+	m_iMouseX           = iMouseX;
+	m_iMouseY           = iMouseY;
+	m_ePlayer           = ePlayer;
+	m_bProcessed        = true;
+	m_iConsecutiveFrames++;
+}
+
+void Action::assign ( const int iVal , const Sint32 iMouseX , const Sint32 iMouseY , const Sint32 iMouseXRel , const Sint32 iMouseYRel , 
+					  const ePlayers ePlayer )
+{
+	m_iValue	        = iVal;
+	m_iMouseX	        = iMouseX;
+	m_iMouseY           = iMouseY;
+	m_iMouseXRel        = iMouseXRel;
+	m_iMouseYRel        = iMouseYRel;
+	m_ePlayer           = ePlayer;
+	m_bProcessed        = true;
+	m_iConsecutiveFrames++;
+}
+
 void Action::reset ()
 {
 	m_eAxisType   = AXIS_NULL;
@@ -88,6 +142,11 @@ void Action::reset ()
 	m_fValue      = 0.0f;
 	m_iJoystickID = -1;
 	m_ePlayer     = PLAYER_INVALID;
+	m_iClicks     = 0;
+	m_iMouseX     = -1;
+	m_iMouseY     = -1;
+	m_iMouseXRel  = 0;
+	m_iMouseYRel  = 0;
 
 	if ( !m_bProcessed )
 	{

@@ -2,7 +2,8 @@
 
 InputManager::InputManager ()
 	: m_mapKeyboardActions         ()
-	, m_mapMouseActions            ()
+	, m_mapMouseButtonActions      ()
+	, m_mapMouseMotionActions      ()
 	, m_mapControllerButtonActions ()
 	, m_mapControllerAxisActions   ()
 	, m_vPossibleActions           ()
@@ -49,6 +50,12 @@ void InputManager::processAction ( const SDL_Event& e , const int iInputType )
 	{
 		case INPUTTYPE_KEYBOARD :
 			action = getKeyboardAction ( e );
+			break;
+		case INPUTTYPE_MOUSEMOTION :
+			action = getMouseMotionAction ( e );
+			break;
+		case INPUTTYPE_MOUSEBUTTON :
+			action = getMouseButtonAction ( e );
 			break;
 		case INPUTTYPE_CONTROLLERBUTTON :
 			action = getControllerButtonAction ( e );
@@ -142,7 +149,8 @@ void InputManager::clearVectors ()
 void InputManager::clearMaps ()
 {
 	m_mapKeyboardActions        .clear ();
-	m_mapMouseActions           .clear ();
+	m_mapMouseButtonActions     .clear ();
+	m_mapMouseMotionActions     .clear ();
 	m_mapControllerButtonActions.clear ();
 	m_mapControllerAxisActions  .clear ();
 }
@@ -209,16 +217,25 @@ std::map<const int , Action*>* InputManager::retrieveMapFromID ( const eInputTyp
 	{
 		case INPUTTYPE_NULL             :
 			return nullptr;
+			break;
 		case INPUTTYPE_KEYBOARD         :
 			return &m_mapKeyboardActions;
-		case INPUTTYPE_MOUSE            :
-			return &m_mapMouseActions;
+			break;
+		case INPUTTYPE_MOUSEMOTION      :
+			return &m_mapMouseMotionActions;
+			break;
+		case INPUTTYPE_MOUSEBUTTON      :
+			return &m_mapMouseButtonActions;
+			break;
 		case INPUTTYPE_CONTROLLERBUTTON :
 			return &m_mapControllerButtonActions;
+			break;
 		case INPUTTYPE_CONTROLLERAXIS   :
 			return &m_mapControllerAxisActions;
+			break;
 		default:
 			return nullptr;
+			break;
 	}
 }
 
@@ -237,6 +254,46 @@ Action * InputManager::getKeyboardAction ( const SDL_Event & e ) const
 	if ( action != nullptr )
 	{
 		action->assign ( e.cbutton.state , PLAYER_1 );
+	}
+
+	return action;
+}
+
+Action * InputManager::getMouseMotionAction ( const SDL_Event & e ) const
+{
+	const int iIndex = 0;
+	Action*   action = nullptr;
+
+	//Find the correct action mapped to the pressed input
+	if ( m_mapMouseMotionActions.count ( iIndex ) )
+	{
+		action = m_mapMouseMotionActions.at ( iIndex );
+	}
+
+	//Assign it the relevant passed in information
+	if ( action != nullptr )
+	{
+		action->assign ( e.cbutton.state , e.motion.x , e.motion.y , e.motion.xrel , e.motion.yrel , PLAYER_1 );
+	}
+
+	return action;
+}
+
+Action * InputManager::getMouseButtonAction ( const SDL_Event & e ) const
+{
+	const int iIndex = e.button.button;
+	Action*   action = nullptr;
+
+	//Find the correct action mapped to the pressed input
+	if ( m_mapMouseButtonActions.count ( iIndex ) )
+	{
+		action = m_mapMouseButtonActions.at ( iIndex );
+	}
+
+	//Assign it the relevant passed in information
+	if ( action != nullptr )
+	{
+		action->assign ( e.cbutton.state , e.button.clicks , e.button.x , e.button.y , PLAYER_1 );
 	}
 
 	return action;

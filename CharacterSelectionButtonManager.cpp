@@ -3,7 +3,9 @@
 CharacterSelectionButtonManager::CharacterSelectionButtonManager ()
 	: m_mainMenuButton   ( nullptr )
 	, m_vButtonPositions ( nullptr )
-	, m_iCurrentButton ( 0 )
+	, m_fButtonWidth     ( 0.0f    )
+	, m_fButtonHeight    ( 0.0f    )
+	, m_iCurrentButton   ( 0       )
 {
 
 }
@@ -29,6 +31,12 @@ const int CharacterSelectionButtonManager::getSelection () const
 const bool CharacterSelectionButtonManager::getSelected () const
 {
 	return m_bSelected;
+}
+
+void CharacterSelectionButtonManager::setButtonSize ( float fW , float fH )
+{
+	m_fButtonWidth  = fW;
+	m_fButtonHeight = fH;
 }
 
 void CharacterSelectionButtonManager::init ( FileLoader * pFileLoader , SDL_Renderer * pRenderer , ePlayers ePlayer )
@@ -77,6 +85,7 @@ void CharacterSelectionButtonManager::init ( FileLoader * pFileLoader , SDL_Rend
 	//Subscribe this object to listen to the correct actions
 	m_vActionListener.push_back ( ACTION_INTERACT           );
 	m_vActionListener.push_back ( ACTION_RETURN             );
+	m_vActionListener.push_back ( ACTION_MOVECURSOR         );
 	m_vActionListener.push_back ( ACTION_MOVESELECTIONUP    );
 	m_vActionListener.push_back ( ACTION_MOVESELECTIONDOWN  );
 	m_vActionListener.push_back ( ACTION_MOVESELECTIONLEFT  );
@@ -111,6 +120,9 @@ void CharacterSelectionButtonManager::update ()
 				break;
 			case ACTION_RETURN:
 				back ();
+				break;
+			case ACTION_MOVECURSOR:
+				moveCursor ( *it );
 				break;
 			case ACTION_MOVESELECTIONDOWN:
 				moveSelectionY ( 1 );
@@ -177,6 +189,29 @@ void CharacterSelectionButtonManager::interact ()
 void CharacterSelectionButtonManager::back ()
 {
 	m_eGameState = GAMESTATE_MAINMENU;
+}
+
+void CharacterSelectionButtonManager::moveCursor ( const Action * action )
+{
+	int x = action->getMouseX ();
+	int y = action->getMouseY ();
+
+	for ( int i = 0; i < ciNUM_CHARACTERS; i++ )
+	{
+		if ( x < m_vButtonPositions [ i ].x                   ||
+			 x > m_vButtonPositions [ i ].x + m_fButtonWidth  ||
+			 y < m_vButtonPositions [ i ].y                   ||
+			 y > m_vButtonPositions [ i ].y + m_fButtonHeight )
+		{
+			continue;
+		}
+
+		m_mainMenuButton [ m_iCurrentButton ].setActive ( false );
+		m_iCurrentButton = i;
+		m_iSelection     = i;
+		m_mainMenuButton [ m_iCurrentButton ].setActive ( true );
+		break;
+	}
 }
 
 void CharacterSelectionButtonManager::moveSelectionX ( const int iDirection )
