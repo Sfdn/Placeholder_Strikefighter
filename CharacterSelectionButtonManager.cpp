@@ -180,10 +180,7 @@ void CharacterSelectionButtonManager::onNotify ( GameObject * pGameObject , cons
 
 void CharacterSelectionButtonManager::interact ()
 {
-	if ( !m_bSelected )
-	{
-		m_bSelected  = true;
-	}
+	m_bSelected = !m_bSelected;
 }
 
 void CharacterSelectionButtonManager::back ()
@@ -193,6 +190,8 @@ void CharacterSelectionButtonManager::back ()
 
 void CharacterSelectionButtonManager::moveCursor ( const Action * action )
 {
+	if ( m_bSelected ) { return; }
+
 	int x = action->getMouseX ();
 	int y = action->getMouseY ();
 
