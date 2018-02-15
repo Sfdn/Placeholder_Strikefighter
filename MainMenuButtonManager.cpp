@@ -10,8 +10,8 @@ MainMenuButtonManager::MainMenuButtonManager ()
 	, m_iConfirmButton          ( 0       )
 	, m_bShowConfirmBox         ( false   )
 {
-	m_mainMenuButton   = new MainMenuButton [ ciNumMenuButtons ];
-	m_vButtonPositions = new Vector3<float> [ ciNumMenuButtons ]
+	m_mainMenuButton   = new MainMenuButton [ ciNUM_MENU_BUTTONS ];
+	m_vButtonPositions = new Vector3<float> [ ciNUM_MENU_BUTTONS ]
 	{ { 40.0f  , 215.0f , 0.0f } 
 	, { 125.0f , 284.0f , 0.0f }  
 	, { 220.0f , 350.0f , 0.0f } 
@@ -20,8 +20,8 @@ MainMenuButtonManager::MainMenuButtonManager ()
 	, { 720.0f , 550.0f , 0.0f }
 	};
 
-	m_confirmBoxButton        = new MainMenuButton [ ciNumConfirmButtons ];
-	m_vConfirmButtonPositions = new Vector3<float> [ ciNumConfirmButtons ]
+	m_confirmBoxButton        = new MainMenuButton [ ciNUM_CONFIRM_BUTTONS ];
+	m_vConfirmButtonPositions = new Vector3<float> [ ciNUM_CONFIRM_BUTTONS ]
 	{ { 525.0f , 385.0f , 0.0f }
 	, { 705.0f , 385.0f , 0.0f }
 	};
@@ -52,14 +52,14 @@ MainMenuButtonManager::~MainMenuButtonManager ()
 
 void MainMenuButtonManager::init ( FileLoader * pFileLoader , SDL_Renderer * pRenderer )
 {
-	for ( int i = 0; i < ciNumMenuButtons; i++ )
+	for ( int i = 0; i < ciNUM_MENU_BUTTONS; i++ )
 	{
 		m_mainMenuButton [ i ].setSprite ( SpriteFactory::createSprite ( pFileLoader , csTEXTURE_PATH + csMAIN_MENU_SELECTOR + csIMAGE_EXTENSION ) );
 		m_mainMenuButton [ i ].getSprite ()->setRenderer ( pRenderer );
 		m_mainMenuButton [ i ].getSprite ()->setPosition ( m_vButtonPositions [ i ] );
 	}
 
-	for ( int j = 0; j < ciNumConfirmButtons; j++ )
+	for ( int j = 0; j < ciNUM_CONFIRM_BUTTONS; j++ )
 	{
 		m_confirmBoxButton [ j ].setSprite ( SpriteFactory::createSprite ( pFileLoader , csTEXTURE_PATH + csMAIN_MENU_SELECTOR_5 + csIMAGE_EXTENSION ) );
 		m_confirmBoxButton [ j ].getSprite ()->setRenderer ( pRenderer );
@@ -75,6 +75,7 @@ void MainMenuButtonManager::init ( FileLoader * pFileLoader , SDL_Renderer * pRe
 
 	m_vActionListener.push_back ( ACTION_INTERACT           );
 	m_vActionListener.push_back ( ACTION_RETURN             );
+	m_vActionListener.push_back ( ACTION_MOVECURSOR         );
 	m_vActionListener.push_back ( ACTION_MOVESELECTIONUP    );
 	m_vActionListener.push_back ( ACTION_MOVESELECTIONDOWN  );
 	m_vActionListener.push_back ( ACTION_MOVESELECTIONLEFT  );
@@ -99,6 +100,9 @@ void MainMenuButtonManager::update ()
 				break;
 			case ACTION_RETURN:
 				back ();
+				break;
+			case ACTION_MOVECURSOR:
+				moveCursor ( *it );
 				break;
 			case ACTION_MOVESELECTIONDOWN:
 				moveSelectionY ( 1 );
@@ -194,6 +198,47 @@ void MainMenuButtonManager::back ()
 	m_eGameState = GAMESTATE_STARTGAME;
 }
 
+void MainMenuButtonManager::moveCursor ( Action* action )
+{
+	int x = action->getMouseX ();
+	int y = action->getMouseY ();
+
+	if ( !m_bShowConfirmBox )
+	{
+		for ( int i = 0; i < ciNUM_MENU_BUTTONS; i++ )
+		{
+			if ( x < m_vButtonPositions [ i ].x ||
+				 x > m_vButtonPositions [ i ].x + 300 ||
+				 y < m_vButtonPositions [ i ].y ||
+				 y > m_vButtonPositions [ i ].y + 80 )
+			{
+				continue;
+			}
+
+			m_mainMenuButton [ m_iCurrentButton ].setActive ( false );
+			m_iCurrentButton = i;
+			m_mainMenuButton [ m_iCurrentButton ].setActive ( true );
+		}
+	}
+	else
+	{
+		for ( int i = 0; i < ciNUM_CONFIRM_BUTTONS; i++ )
+		{
+			if ( x < m_vConfirmButtonPositions [ i ].x ||
+				 x > m_vConfirmButtonPositions [ i ].x + 150 ||
+				 y < m_vConfirmButtonPositions [ i ].y ||
+				 y > m_vConfirmButtonPositions [ i ].y + 100 )
+			{
+				continue;
+			}
+
+			m_confirmBoxButton [ m_iConfirmButton ].setActive ( false );
+			m_iConfirmButton = i;
+			m_confirmBoxButton [ m_iConfirmButton ].setActive ( true );
+		}
+	}
+}
+
 void MainMenuButtonManager::moveSelectionX ( const int iDirection )
 {
 	if ( !m_bShowConfirmBox )
@@ -203,13 +248,13 @@ void MainMenuButtonManager::moveSelectionX ( const int iDirection )
 	m_confirmBoxButton [ m_iConfirmButton ].setActive ( false );
 	m_iConfirmButton += iDirection;
 
-	if ( m_iConfirmButton >= ciNumConfirmButtons )
+	if ( m_iConfirmButton >= ciNUM_CONFIRM_BUTTONS )
 	{
 		m_iConfirmButton = 0;
 	}
 	else if ( m_iConfirmButton < 0 )
 	{
-		m_iConfirmButton = ciNumConfirmButtons - 1;
+		m_iConfirmButton = ciNUM_CONFIRM_BUTTONS - 1;
 	}
 
 	m_confirmBoxButton [ m_iConfirmButton ].setActive ( true );
@@ -224,13 +269,13 @@ void MainMenuButtonManager::moveSelectionY ( const int iDirection )
 	m_mainMenuButton [ m_iCurrentButton ].setActive ( false );
 	m_iCurrentButton += iDirection;
 
-	if ( m_iCurrentButton >= ciNumMenuButtons )
+	if ( m_iCurrentButton >= ciNUM_MENU_BUTTONS )
 	{
 		m_iCurrentButton = 0;
 	}
 	else if ( m_iCurrentButton < 0 )
 	{
-		m_iCurrentButton = ciNumMenuButtons - 1;
+		m_iCurrentButton = ciNUM_MENU_BUTTONS - 1;
 	}
 
 	m_mainMenuButton [ m_iCurrentButton ].setActive ( true );

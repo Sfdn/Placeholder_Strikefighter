@@ -78,6 +78,7 @@ private:
 
 	void interact       ();
 	void back           ();
+	void moveCursor     ( Action* action       );
 	void moveSelectionX ( const int iDirection );
 	void moveSelectionY ( const int iDirection );
 

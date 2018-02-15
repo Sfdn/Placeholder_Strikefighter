@@ -33,6 +33,12 @@ void GS_MainMenu::handleEvents ()
 			case SDL_KEYDOWN:
 				m_pInputManager->processAction ( m_e , INPUTTYPE_KEYBOARD );
 				break;
+			case SDL_MOUSEMOTION:
+				m_pInputManager->processAction ( m_e , INPUTTYPE_MOUSEMOTION );
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				m_pInputManager->processAction ( m_e , INPUTTYPE_MOUSEBUTTON );
+				break;
 			case SDL_CONTROLLERAXISMOTION:
 				m_pInputManager->processAction ( m_e , INPUTTYPE_CONTROLLERAXIS );
 				break;

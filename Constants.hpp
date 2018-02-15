@@ -60,8 +60,8 @@ const int ciVIDEO_INTRO_WAIT_TIME         = 3000;
 const int ciCHARACTER_SELECTION_WAIT_TIME = 60000;
 
 //Main Menu
-const int ciNumMenuButtons    = 6;
-const int ciNumConfirmButtons = 2;
+const int ciNUM_MENU_BUTTONS    = 6;
+const int ciNUM_CONFIRM_BUTTONS = 2;
 
 //Character Selection Screen
 const int ciNUM_CHARACTERS     = 12;
