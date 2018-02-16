@@ -22,8 +22,8 @@ MainMenuButtonManager::MainMenuButtonManager ()
 
 	m_confirmBoxButton        = new MainMenuButton [ ciNUM_CONFIRM_BUTTONS ];
 	m_vConfirmButtonPositions = new Vector3<float> [ ciNUM_CONFIRM_BUTTONS ]
-	{ { 525.0f , 385.0f , 0.0f }
-	, { 705.0f , 385.0f , 0.0f }
+	{ { 500.0f , 405.0f , 0.0f }
+	, { 695.0f , 405.0f , 0.0f }
 	};
 }
 
@@ -61,7 +61,7 @@ void MainMenuButtonManager::init ( FileLoader * pFileLoader , SDL_Renderer * pRe
 
 	for ( int j = 0; j < ciNUM_CONFIRM_BUTTONS; j++ )
 	{
-		m_confirmBoxButton [ j ].setSprite ( SpriteFactory::createSprite ( pFileLoader , csTEXTURE_PATH + csMAIN_MENU_SELECTOR_5 + csIMAGE_EXTENSION ) );
+		m_confirmBoxButton [ j ].setSprite ( SpriteFactory::createSprite ( pFileLoader , csTEXTURE_PATH + csMAIN_MENU_SELECTOR + csIMAGE_EXTENSION ) );
 		m_confirmBoxButton [ j ].getSprite ()->setRenderer ( pRenderer );
 		m_confirmBoxButton [ j ].getSprite ()->setPosition ( m_vConfirmButtonPositions [ j ] );
 	}
@@ -226,7 +226,7 @@ void MainMenuButtonManager::moveCursor ( Action* action )
 		{
 			if ( x < m_vConfirmButtonPositions [ i ].x ||
 				 x > m_vConfirmButtonPositions [ i ].x + 150 ||
-				 y < m_vConfirmButtonPositions [ i ].y ||
+				 y < m_vConfirmButtonPositions [ i ].y - 20||
 				 y > m_vConfirmButtonPositions [ i ].y + 100 )
 			{
 				continue;
