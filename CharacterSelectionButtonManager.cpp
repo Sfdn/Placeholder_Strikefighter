@@ -116,7 +116,7 @@ void CharacterSelectionButtonManager::update ()
 		switch ( ( *it )->getAction () )
 		{
 			case ACTION_INTERACT:
-				interact ();
+				interact ( *it );
 				break;
 			case ACTION_RETURN:
 				back ();
@@ -178,8 +178,22 @@ void CharacterSelectionButtonManager::onNotify ( GameObject * pGameObject , cons
 	}
 }
 
-void CharacterSelectionButtonManager::interact ()
+void CharacterSelectionButtonManager::interact ( const Action* action )
 {
+	if ( action->getClicks () > 0 )
+	{
+		int x = action->getMouseX ();
+		int y = action->getMouseY ();
+
+		if ( x < m_vButtonPositions [ m_iSelection ].x ||
+			 x > m_vButtonPositions [ m_iSelection ].x + m_fButtonWidth ||
+			 y < m_vButtonPositions [ m_iSelection ].y ||
+			 y > m_vButtonPositions [ m_iSelection ].y + m_fButtonHeight )
+		{
+			return;
+		}
+	}
+
 	m_bSelected = !m_bSelected;
 }
 

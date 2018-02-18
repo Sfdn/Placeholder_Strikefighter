@@ -83,8 +83,8 @@ void GS_CharacterSelect::update ()
 	m_buttonManager_1.update ();
 	m_buttonManager_2.update ();
 
-	//setCharacterNames  ();
-	//setCharacterModels ();
+	setCharacterNames  ();
+	setCharacterModels ();
 
 	//Tell the statemachine to change state if the managers are set to.
 	if ( m_buttonManager_1.getChangedState () != GAMESTATE_NULL )
@@ -271,8 +271,12 @@ void GS_CharacterSelect::setUpObjects ()
 	m_pCharacterPortraits_2 = new Sprite* [ ciNUM_CHARACTERS ];
 	for ( int i = 0; i < ciNUM_CHARACTERS; i++ )
 	{
-		/*m_pCharacterSelection [ i ] = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csCHARACTER_SELECTION + std::to_string ( i ) + csIMAGE_EXTENSION );*/
-		m_pCharacterSelection [ i ] = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csCHARACTER_SELECTION  + csIMAGE_EXTENSION );
+		Sprite* pCharacterSelectionSprite = SpriteFactory::createSprite ( m_pFileLoader , csTEXTURE_PATH + csCHARACTER_SELECTION + std::to_string ( i ) + csIMAGE_EXTENSION );
+		if ( pCharacterSelectionSprite->getTexture () == nullptr )
+		{
+			pCharacterSelectionSprite->setTexture ( m_pFileLoader->loadImage ( csTEXTURE_PATH + csCHARACTER_SELECTION + csIMAGE_EXTENSION ) );
+		}
+		m_pCharacterSelection [ i ] = pCharacterSelectionSprite;
 		m_pCharacterSelection [ i ]->setRenderer ( m_pRenderer );
 		m_pCharacterSelection [ i ]->setPosition ( vSelectionPositions [ i ] );
 
@@ -366,21 +370,37 @@ void GS_CharacterSelect::setVisualTimeLeft ()
 
 void GS_CharacterSelect::setCharacterNames ()
 {
-	m_pCharacterName_0->setTexture ( m_pCharacterNamePool [ m_buttonManager_1.getSelection () ]->getTexture () );
+	SDL_Texture* pTexture1 = m_pCharacterNamePool [ m_buttonManager_1.getSelection () ]->getTexture ();
+	if ( pTexture1 != nullptr )
+	{
+		m_pCharacterName_0->setTexture ( pTexture1 );
+	}
 
 	if ( m_iNumPlayers > 1 )
 	{
-		m_pCharacterName_1->setTexture ( m_pCharacterNamePool [ m_buttonManager_2.getSelection () ]->getTexture () );
+		SDL_Texture* pTexture2 = m_pCharacterNamePool [ m_buttonManager_2.getSelection () ]->getTexture ();
+		if ( pTexture2 != nullptr )
+		{
+			m_pCharacterName_1->setTexture ( pTexture2 );
+		}
 	}
 }
 
 void GS_CharacterSelect::setCharacterModels ()
 {
-	m_pCharacterModel_0->setTexture ( m_pCharacterModelPool [ m_buttonManager_1.getSelection () ]->getTexture () );
+	SDL_Texture* pTexture1 = m_pCharacterModelPool [ m_buttonManager_1.getSelection () ]->getTexture ();
+	if ( pTexture1 != nullptr )
+	{
+		m_pCharacterModel_0->setTexture ( pTexture1 );
+	}
 
 	if ( m_iNumPlayers > 1 )
 	{
-		m_pCharacterModel_1->setTexture ( m_pCharacterModelPool [ m_buttonManager_2.getSelection () ]->getTexture () );
+		SDL_Texture* pTexture2 = m_pCharacterModelPool [ m_buttonManager_2.getSelection () ]->getTexture ();
+		if ( pTexture2 != nullptr )
+		{
+			m_pCharacterModel_1->setTexture ( pTexture2 );
+		}
 	}
 }
 
